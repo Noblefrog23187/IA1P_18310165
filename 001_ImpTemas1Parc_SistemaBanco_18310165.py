@@ -1,5 +1,7 @@
-
-
+"""Autor: José Antonio López Haro
+Implementación de los temas comprendidos por el curso de python en un sistema básico de gestion de cuentas bancarias. Tiene dentro de su algoritmo el uso de try/catch, match, for, if, clases, constructores, listas, manejo
+de variables y cambio de tipos entre ellas, algoritmos de búsqueda y modificación de los elementos antes mencionados.
+"""
 
 import sys  #Import del paquete "Sys" para manipular la consola desde el programa
  
@@ -45,7 +47,7 @@ def Registra():
         Nombre = input(" Nombre de usuario  :  ")
         ID = IDs+1
         try:
-            Saldo = int(input(" Deposito inicial:  "))
+            Saldo = float(input(" Deposito inicial:  "))
         except:
             print("Eso no es un numero, saldo inicial declarado a 0")
             Saldo = 0
@@ -64,7 +66,7 @@ def Registra():
             IDs -= 1
             
             
-        return None #Función "Registra" recopila datos del usuario y los pasa la función constructor de la clase Usuario
+        return None #Función "Registra" recopila datos del usuario y los pasa la función constructor de la clase Usuario. Al ser un proceso en contacto con el usuario está equipado con try/catch
 
 def Del_Acount():
     
@@ -85,7 +87,7 @@ def Del_Acount():
     Correct = input("\nEs la informacion correcta? Y/N")
     if Correct == "Y" or Correct =="y":
         del usuarios[ObjIn.ID]
-        print("\nSe elimino con exito a " + ObjIn.NombreComp + " con el ID " + str(ObjIn.ID)) #Función "Del_Acount" elimina una cuenta objetivo identificándola con las funciones anteriores de búsqueda
+        print("\nSe elimino con exito a " + ObjIn.NombreComp + " con el ID " + str(ObjIn.ID)) #Función "Del_Acount" elimina una cuenta objetivo identificándola con las funciones anteriores de búsqueda. Al ser un proceso en contacto con el usuario está equipado con try/catch
 
 def Cash_In(): 
     
@@ -104,12 +106,12 @@ def Cash_In():
     print("\nLa informacion de la cuenta es: \n Usuario: "+ObjIn.NombreComp+ "\n ID: "+str(ObjIn.ID)+"\n Tipo de miembro: "+ObjIn.Tipo)
     Correct = input("\nEs la informacion correcta? Y/N")
     if Correct == "Y" or Correct =="y":
-        Monto = int(input("\nCuanto desea ingresar? "))
+        Monto = float(input("\nCuanto desea ingresar? "))
         Mod_Saldo(ObjIn.ID,Monto)
         print("Operacion realizada con exito")
         print("Su nuevo balance es: "+str(ObjIn.Saldo))
     else:
-       print("Operacion cancelada") #Función "Cash_In" identifica una cuenta a ingresar efectivo con las funciones de búsqueda y modifica su saldo
+       print("Operacion cancelada") #Función "Cash_In" identifica una cuenta a ingresar efectivo con las funciones de búsqueda y modifica su saldo. Al ser un proceso en contacto con el usuario está equipado con try/catch
 
 def Cash_Out():
     
@@ -128,7 +130,7 @@ def Cash_Out():
     print("\nLa informacion de la cuenta es: \n Usuario: "+ObjIn.NombreComp+ "\n ID: "+str(ObjIn.ID)+"\n Saldo: "+str(ObjIn.Saldo))
     Correct = input("\nEs la informacion correcta? Y/N")
     if Correct == "Y" or Correct =="y":
-       Monto = int(input("\nCuanto desea retirar? "))
+       Monto = float(input("\nCuanto desea retirar? "))
        if ObjIn.Saldo >= Monto:
            Mod_Saldo(ObjIn.ID,-Monto)
            print("Operacion realizada con exito")
@@ -136,7 +138,7 @@ def Cash_Out():
        else:
            print("Saldo insuficiente")
     else:
-        print("Operacion cancelada") #Función "Cash_Out" identifica una cuenta a retirar efectivo con las funciones de búsqueda y modifica su saldo
+        print("Operacion cancelada") #Función "Cash_Out" identifica una cuenta a retirar efectivo con las funciones de búsqueda y modifica su saldo. Al ser un proceso en contacto con el usuario está equipado con try/catch
 
 def Transfer():
     
@@ -172,7 +174,7 @@ def Transfer():
         print("\nLa informacion de la cuenta es: \n Usuario: "+ObjIn2.NombreComp+ "\n ID: "+str(ObjIn2.ID)+"\n Saldo: "+str(ObjIn2.Saldo))
         Correct = input("\nEs la informacion correcta? Y/N")
         if Correct == "Y" or Correct =="y":
-             Monto = int(input("\nCuanto desea transferir? "))
+             Monto = float(input("\nCuanto desea transferir? "))
              if ObjIn2.Saldo >= Monto:
                  Mod_Saldo(ObjIn2.ID,-Monto)
                  Mod_Saldo(ObjIn.ID,Monto)
@@ -183,7 +185,7 @@ def Transfer():
         else:
             print("")
     else:
-        print("Operacion cancelada") #Función "Transfer" identifica 2 cuentas para transferir efectivo de una a otra
+        print("Operacion cancelada") #Función "Transfer" identifica 2 cuentas para transferir efectivo de una a otra. Al ser un proceso en contacto con el usuario está equipado con try/catch
 
 def Menu():
     global IDs
